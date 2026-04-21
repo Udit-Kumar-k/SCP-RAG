@@ -95,6 +95,22 @@
             </section>
         </main>
     </div>
+    <!-- SCP Full Text Modal -->
+    <div id="scpModal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span id="modalScpId" class="modal-scp-id"></span>
+                    <span id="modalClass" class="object-class"></span>
+                </div>
+                <div class="modal-actions">
+                    <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="wiki-link-btn">Try on SCP Wiki ↗</a>
+                    <button id="modalClose" class="modal-close-btn">&times;</button>
+                </div>
+            </div>
+            <div id="modalText" class="modal-text"></div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
