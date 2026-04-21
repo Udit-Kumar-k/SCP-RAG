@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror Brainstorm Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Load modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="top-nav">
+            <div class="logo">
+                <span class="logo-mark">SCP-RAG</span>
+                <h1>Horror Brainstorm Hub</h1>
+            </div>
+            <div class="status-indicator">
+                <div class="pulse-dot"></div>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard">
+            <!-- Sidebar Controls -->
+            <aside class="control-panel panel">
+                <h2>Query Parameters</h2>
+                <form id="searchForm">
+                    <div class="input-group">
+                        <label for="query">Horror Theme / Concept</label>
+                        <input type="text" id="query" placeholder="e.g., mirrors that show wrong reflections" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="mode">Mode</label>
+                        <select id="mode">
+                            <option value="brainstorm">Brainstorm Ideas</option>
+                            <option value="find">Research a Theme</option>
+                            <option value="short_film">Short Film Concept</option>
+                            <option value="full_film">Feature Film Pitch</option>
+                        </select>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="limit">Max Results</label>
+                            <!-- Input gives users complete freedom -->
+                            <input type="number" id="limit" value="5" min="1" max="100">
+                        </div>
+                        <div class="input-group">
+                            <label for="classFilter">Object Class</label>
+                            <select id="classFilter">
+                                <option value="all">Any</option>
+                                <option value="Safe">Safe</option>
+                                <option value="Euclid">Euclid</option>
+                                <option value="Keter">Keter</option>
+                                <option value="Thaumiel">Thaumiel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="primary-btn">
+                        <span>INITIATE PROTOCOL</span>
+                        <div class="btn-scanline"></div>
+                    </button>
+                </form>
+            </aside>
+
+            <!-- Results Section -->
+            <section class="results-display panel">
+                <div id="loader" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Accessing Foundation Archives...</p>
+                </div>
+
+                <div id="resultsContainer" class="hidden">
+                    <div class="ai-report">
+                        <h3><span class="red-text">[AI]</span> Creative Analysis</h3>
+                        <div id="aiResponse" class="markdown-content"></div>
+                    </div>
+
+                    <h3>Reference Entries <span id="resultCount" class="badge"></span></h3>
+                    <div id="scpCards" class="card-grid">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+
+                <div id="welcomeMessage" class="welcome-box">
+                    <h2>HORROR BRAINSTORM HUB</h2>
+                    <p>Your AI-powered creative partner for horror writing, filmmaking, and storytelling.</p>
+                    <p class="dim-text">Powered by a horror fiction archive. Enter any dark concept and let the hub generate original ideas, film pitches, and story angles.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
